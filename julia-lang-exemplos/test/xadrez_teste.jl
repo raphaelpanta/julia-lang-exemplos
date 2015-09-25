@@ -31,4 +31,6 @@ Test.with_handler(custom_handler) do
     @test xadrez(1,1) == "0\n"
     @test xadrez(2,1) == "01\n"
     @test xadrez(1,2) == "0\n1\n"
+    @test xadrez(7,4) == "0101010\n1010101\n0101010\n1010101\n"
+    @test xadrez(4,7) == "0101\n1010\n0101\n1010\n0101\n1010\n0101\n"
 end
