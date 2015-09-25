@@ -26,6 +26,8 @@ import Xadrez
 
 Test.with_handler(custom_handler) do
   @test xadrez(0,0) == ""
+  @test xadrez(0,1) == ""
+  @test xadrez(1,0) == ""
   @test xadrez(1,1) == "0"
   @test xadrez(2,1) == "01"
 end
