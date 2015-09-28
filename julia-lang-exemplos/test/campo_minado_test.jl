@@ -29,10 +29,11 @@ using Base.Test
 import CampoMinado
 
 Test.with_handler(custom_handler) do
-  @test checarCampo("O") == true
-  @test checarCampo("X") == true
+  @test checarCampo("O\n") == true
+  @test checarCampo("X\n") == true
   @test checarCampo("")  == true
   @test checarCampo("O\nX\n") == true
+  @test checarCampo("OOO\nXX\n") == false
 
   @test campoMinado("O") == "O"
 end
