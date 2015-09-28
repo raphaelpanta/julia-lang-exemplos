@@ -19,9 +19,9 @@ Formato de saída:
 
 =#
 include("..\\src\\campo_minado.jl")
+include("error_handler_pt_br.jl")
 
 module CampoMinadoTeste
-  include("error_handler_pt_br.jl")
 end
 
 using Base.Test
@@ -29,5 +29,10 @@ using Base.Test
 import CampoMinado
 
 Test.with_handler(custom_handler) do
+  @test checarCampo("O") == true
+  @test checarCampo("X") == true
+  @test checarCampo("")  == true
+  @test checarCampo("O\nX\n") == true
+
   @test campoMinado("O") == "O"
 end
