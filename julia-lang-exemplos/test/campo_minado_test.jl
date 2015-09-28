@@ -29,13 +29,13 @@ using Base.Test
 import CampoMinado
 
 Test.with_handler(custom_handler) do
-  @test ehValido("O\n") == true
-  @test ehValido("X\n") == true
+  @test ehValido("O \n") == true
+  @test ehValido("X \n") == true
   @test ehValido("")  == true
-  @test ehValido("O\nX\n") == true
-  @test ehValido("OOO\nXX\n") == false
+  @test ehValido("O \nX \n") == true
+  @test ehValido("O O O\nX X\n") == false
   @test ehValido("zcakjsfajbsclkak") == false
-  @test ehValido("OOOXXXX") == false
+  @test ehValido("O OOXXXX") == false
 
 
   @test_throws ArgumentError campoMinado("asndnasdasddkj")
