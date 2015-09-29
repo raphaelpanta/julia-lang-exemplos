@@ -28,10 +28,28 @@ function paraArray(campo::String)
 function campoMinado(campo ::String)
   if ehValido(campo)
     r = ""
-    for c in paraArray(campo)
-     r = r * string(c == 'O'? '0' : c)
+    campoarr = paraArray(campo)
+
+    valor = function(arr, x, y)
+      if x > 0 && y > 0 && x < length(arr) && y < length(arr[x])
+        if(arr[x,y] = 'X')
+          1
+        end
+      end
+      0
     end
-   return r
+
+    for i = [1:length(campoarr)]
+       for j = [1:length(campoarr[i])]
+          if campoarr[i][j] != 'X'
+             contar =  valor(campoarr,i-1,j-1) + valor(campoarr,i,j-1) + valor(campoarr,i + 1,j - 1)
+                    +  valor(campoarr,i-1,j)   + valor(campoarr,i+1,j)
+                    +  valor(campoarr,i-1,j)   + valor(campoarr,i,j+1)   + valor(campoarr,i + 1, j + 1)
+             insert!(campoarr[i], j, char(contar) )
+          end
+      end
+    end
+   return campoarr
   end
   throw(ArgumentError("Campo minado com formato incorreto!"))
 end
