@@ -58,4 +58,5 @@ Test.with_handler(custom_handler) do
 
   @test_throws ArgumentError campoMinado("asndnasdasddkj")
   @test campoMinado("O \n") == "0 \n"
+  @test campoMinado("O X \n") == "1 X \n"
 end

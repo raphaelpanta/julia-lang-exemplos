@@ -10,19 +10,15 @@ end
 function checarTamanhoDeLinhasDo(campo::String)
   strs = split(campo, '\n')
 
-  if length(strs) == 0
-    return false
-  end
+  if length(strs) != 0
+    w = map (x -> mapreduce(z-> 1, +, x) , strs[1:end-1])
 
-  w = map (x -> mapreduce(z-> 1, +, x) , strs[1:end-1])
-
-  if length(w) == 0
-    return false
-  end
-
-  m = maximum(w);
-  return all(z ->  m == z, w)
-  end
+    if length(w) != 0
+      m = maximum(w);
+      return all(z ->  m == z, w)
+    end
+  return false
+end
 
 
 function campoMinado(campo ::String)
