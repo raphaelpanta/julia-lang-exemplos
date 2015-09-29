@@ -19,6 +19,7 @@ function checarTamanhoDeLinhasDo(campo::String)
       end
     return false
   end
+end
 
 function paraArray(campo::String)
     map( x -> reduce(push!, Char[], x), split (filter(c -> c != ' ', campo), '\n')[1:end-1])
@@ -27,7 +28,7 @@ function paraArray(campo::String)
 function campoMinado(campo ::String)
   if ehValido(campo)
     r = ""
-    for c in campo
+    for c in paraArray(campo)
      r = r * string(c == 'O'? '0' : c)
     end
    return r
