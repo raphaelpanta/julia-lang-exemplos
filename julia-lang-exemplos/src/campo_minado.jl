@@ -4,7 +4,7 @@ export campoMinado
 export ehValido
 
 function ehValido(campo ::String)
- length(campo) == 0 || ( ismatch(r"(O|X|\n)", campo) && checarTamanhoDeLinhasDo(campo))
+ length(campo) == 0 || ( ismatch(r"((X{1}\s{1}|O{1}\s{1})\n{1})+", campo) && checarTamanhoDeLinhasDo(campo))
 end
 
 function checarTamanhoDeLinhasDo(campo::String)

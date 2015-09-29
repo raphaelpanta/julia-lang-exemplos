@@ -29,6 +29,8 @@ using Base.Test
 import CampoMinado
 
 Test.with_handler(custom_handler) do
+  @test ehValido("O\n") == false
+  @test ehValido("X\n") == false
   @test ehValido("O \n") == true
   @test ehValido("X \n") == true
   @test ehValido("")  == true
@@ -39,5 +41,5 @@ Test.with_handler(custom_handler) do
 
 
   @test_throws ArgumentError campoMinado("asndnasdasddkj")
-  @test campoMinado("O\n") == "O\n"
+  @test campoMinado("O \n") == "O \n"
 end
