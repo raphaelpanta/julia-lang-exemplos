@@ -55,6 +55,8 @@ Test.with_handler(custom_handler) do
   @test ehValido("zcakjsfajbsclkak") == false
   @test ehValido("O OOXXXX") == false
 
+  @test paraArray("O X \n") == Vector[Char['O','X']];
+  @test paraArray("O \nX \n") == Vector[Char['O'],Char['X']];
 
   @test_throws ArgumentError campoMinado("asndnasdasddkj")
   @test campoMinado("O \n") == "0 \n"

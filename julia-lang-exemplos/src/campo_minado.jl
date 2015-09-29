@@ -14,12 +14,15 @@ function checarTamanhoDeLinhasDo(campo::String)
     w = map (x -> mapreduce(z-> 1, +, x) , strs[1:end-1])
 
     if length(w) != 0
-      m = maximum(w);
-      return all(z ->  m == z, w)
-    end
-  return false
-end
+        m = maximum(w);
+        return all(z ->  m == z, w)
+      end
+    return false
+  end
 
+function paraArray(campo::String)
+    map( x -> reduce(push!, Char[], x), split (filter(c -> c != ' ', campo), '\n')[1:end-1])
+  end
 
 function campoMinado(campo ::String)
   if ehValido(campo)
