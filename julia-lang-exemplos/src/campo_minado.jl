@@ -25,4 +25,13 @@ function checarTamanhoDeLinhasDo(campo::String)
   end
 
 
-campoMinado(campo ::String) = ehValido(campo) ? campo : throw(ArgumentError("Campo minado com formato incorreto!"))
+function campoMinado(campo ::String)
+  if ehValido(campo)
+    r = ""
+    for c in campo
+     r = r * string(c == 'O'? '0' : c)
+    end
+   return r
+  end
+  throw(ArgumentError("Campo minado com formato incorreto!"))
+end
